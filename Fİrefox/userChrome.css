@@ -1,0 +1,83 @@
+browser { background-color: #001E26 !important; }
+/*  */
+#nav-bar {
+    background: transparent !important;
+}
+/* Remove the black line */
+#tab-view-deck{
+    margin-top:-1px
+} 
+/* Short URL https://raw.githubusercontent.com/TanzNukeTerror/Custom-Firefox/master/bindings.xml */
+#urlbar {
+    -moz-binding: url("bindings.xml#urlbar") !important;
+}
+/* Center URL */
+#urlbar .urlbar-input-box {
+    text-align: center; margin-bottom: 0px;
+}
+/*  */
+#PersonalToolbar{
+    -moz-box-ordinal-group: 2 !important;
+    background: transparent !important;
+}
+
+/* Autohide Tabs */
+
+:root[uidensity=compact] #navigator-toolbox {
+  --tab-autohide-margin: -29px;
+}
+:root:not([uidensity]) #navigator-toolbox {
+  --tab-autohide-margin: -33px;
+}
+:root[uidensity=touch] #navigator-toolbox {
+  --tab-autohide-margin: -41px;
+}
+
+:root:not([customizing]) #TabsToolbar {
+    margin-top: var(--tab-autohide-margin) !important;
+    transition: all 0.3s ease 0s !important;
+    opacity: 0;
+}
+#TabsToolbar {
+    -moz-box-ordinal-group: 3 !important; /* Bottom tabs */
+}
+#navigator-toolbox {
+    position: relative;
+    transition: all 0.3s ease 0s !important;
+}
+:root:not([customizing]) #navigator-toolbox:hover {
+    margin-bottom: var(--tab-autohide-margin) !important;
+    transition: all 0.3s ease 0s !important;
+}
+:root:not([customizing]) #navigator-toolbox:hover > #TabsToolbar {
+    margin-top: 0px !important;
+    transition: all 0.3s ease 0s !important;
+    opacity: 1;
+}
+
+/* Remove borders from tabs. */
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+   border-left: none !important;
+}
+
+/* Cleanup */
+.tabs-newtab-button,
+.tab-close-button.tab-close-button,
+#pageActionButton,
+#identity-icon,
+#identity-box {
+    display: none !important;
+}
+
+/* Tabs don't move when dragging. */
+#TabsToolbar[movingtab] {
+    padding-bottom: -0px !important;
+}
+#TabsToolbar[movingtab] > .tabbrowser-tabs {
+    padding-bottom: -0px !important;
+    margin-bottom: -0px !important;
+}
+#TabsToolbar[movingtab] + #nav-bar {
+    margin-top: -0px !important;
+    pointer-events: none;
+}
